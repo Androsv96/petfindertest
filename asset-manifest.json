@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/petfindertest/static/css/main.5ecd60fb.chunk.css",
+    "main.js": "/petfindertest/static/js/main.8768247a.chunk.js",
+    "main.js.map": "/petfindertest/static/js/main.8768247a.chunk.js.map",
+    "runtime-main.js": "/petfindertest/static/js/runtime-main.da8c0bad.js",
+    "runtime-main.js.map": "/petfindertest/static/js/runtime-main.da8c0bad.js.map",
+    "static/js/2.fec8a12b.chunk.js": "/petfindertest/static/js/2.fec8a12b.chunk.js",
+    "static/js/2.fec8a12b.chunk.js.map": "/petfindertest/static/js/2.fec8a12b.chunk.js.map",
+    "index.html": "/petfindertest/index.html",
+    "precache-manifest.620271c8158a0aeafda3847a147c289e.js": "/petfindertest/precache-manifest.620271c8158a0aeafda3847a147c289e.js",
+    "service-worker.js": "/petfindertest/service-worker.js",
+    "static/css/main.5ecd60fb.chunk.css.map": "/petfindertest/static/css/main.5ecd60fb.chunk.css.map",
+    "static/js/2.fec8a12b.chunk.js.LICENSE.txt": "/petfindertest/static/js/2.fec8a12b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.da8c0bad.js",
+    "static/js/2.fec8a12b.chunk.js",
+    "static/css/main.5ecd60fb.chunk.css",
+    "static/js/main.8768247a.chunk.js"
+  ]
+}
