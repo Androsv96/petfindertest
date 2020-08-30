@@ -1,0 +1,26 @@
+.paper{
+    display: flex;
+    flex-direction: column;
+    height: 200px;
+    background-color: grey !important;
+    color: white !important;
+}
+
+.petImageContainer{
+    display: flex;
+    justify-content: center;
+    height: 80%;
+    align-items: center;
+}
+
+.petImage{
+   height: 150px; 
+   width: 150px;
+   border-radius: 50%;
+}
+
+.nameContainer{
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+}

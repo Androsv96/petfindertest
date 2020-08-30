@@ -9,5 +9,5 @@ import progressOnReducer from './progressOnReducer';
 export default combineReducers({
     petsReducer,
     filtersReducer,
-    progressOnReducer
+    progressOnReducer,
 });

@@ -1,0 +1,16 @@
+.mainListTitle {
+    color: white !important;
+}
+
+.mainList{
+    background-color: grey;
+    color: white !important;
+    border-radius: 5px;
+}
+
+.subList{
+    background-color: grey;
+    color: white !important;
+    height: 50px;
+    border-radius: 5px;
+}

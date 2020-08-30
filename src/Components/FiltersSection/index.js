@@ -9,8 +9,8 @@ import { actionDispatcher } from '../../Redux/Actions';
 /* Components */
 import view from "./view";
 
-const mapStateToProps = ({ filtersReducer }) => ({
-    filtersReducer,
+const mapStateToProps = ({ filtersReducer, petsReducer, }) => ({
+    filtersReducer, petsReducer,
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ actionDispatcher }, dispatch);

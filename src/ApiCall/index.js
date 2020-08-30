@@ -21,7 +21,6 @@ export default async function apiCall(url, method, data) {
     } else if (method === GET_METHOD) {
 
         let token = getToken();
-        console.log("asdasd", token)
         return await fetch(url, {
             method,
             headers: {

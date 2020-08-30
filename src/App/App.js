@@ -8,7 +8,8 @@ import Box from '@material-ui/core/Box';
 import AppBar from '../Components/Appbar/view';
 import styles from './css.module.css';
 import ProgressOn from '../Components/ProgressOn/view';
-import FiltersContainer from '../Components/Filters';
+import FiltersContainer from '../Components/FiltersSection';
+import PetsContainer from '../Components/Pets/';
 
 function App({ progressOnReducer }) {
 
@@ -25,9 +26,13 @@ function App({ progressOnReducer }) {
         <Box className={styles.filterContainer}>
           <FiltersContainer />
         </Box>
-        <Box className={styles.dataContainer}></Box>
+
+        <Box className={styles.dataContainer}>
+          <PetsContainer />
+        </Box>
 
       </Box>
+
     </Box>
   );
 }
