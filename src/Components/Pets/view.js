@@ -20,6 +20,7 @@ export default function Pets({ petsReducer, actionDispatcher }) {
     /* Store data */
     const { petsData } = petsReducer;
     console.log(petsData)
+
     /* Hooks */
     useEffect(() => {
         if (petsData.length === 0) actionDispatcher(GET_PETS_BEGIN);
