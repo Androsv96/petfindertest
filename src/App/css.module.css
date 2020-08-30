@@ -1,0 +1,19 @@
+.mainContainer{
+    height: 100%;
+}
+
+.subContainer{
+    display: flex;
+    flex-direction: row;
+    height: calc(100% - 64px);
+}
+
+.filterContainer{
+    width: 30%;
+    height: 100%;
+}
+
+.dataContainer{
+    width: 70%;
+    height: 100%;
+}
