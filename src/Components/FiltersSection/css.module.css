@@ -1,7 +1,16 @@
-.mainListTitle {
-  color: #6603b7 !important;
-  font-size: 20px !important;
-  font-weight: bold !important;
+.selectedBreeds {
+  color: black !important;
+  background-color: white;
+}
+
+.filtersSelected {
+  background-color: white !important;
+  color: black;
+  margin-right: 1% !important;
+}
+
+.filtersSelectedIcon {
+  color: red;
 }
 
 .mainList {

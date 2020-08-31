@@ -1,22 +1,23 @@
 /* Reduxñ-actions */
 import {
     GET_ANIMAL_TYPES_SUCCESS, SET_SELECTED_ANIMAL_TYPE_FILTER, GET_BREEDS_BY_ANIMAL_TYPE_SUCCESS,
-    SET_ANIMALS_TYPES_COLLAPSED, SET_ANIMALS_BREEDS_COLLAPSED, SET_SHOW_MORE_BREEDS,
+    SET_ANIMALS_TYPES_COLLAPSED, SET_ANIMALS_BREEDS_COLLAPSED, SET_SHOW_MORE_BREEDS, SET_BREEDS_SELECTED,
 } from '../Actions';
 
 const initialState = {
     animalTypes: [],
-    animalTypeSelectedBreeds: [],
+    petsBreeds: [],
     selectedAnimalTypeFilter: "",
     showAnimalsTypesCollapsed: true,
     showANimalBreedsCollapsed: false,
     animalsBreedsShowFrom: 0,
     animalsBreedsShowUntil: 10,
+    breedsSelected: [],
 
 }
 
 export default function FiltersReducer(state = initialState, action) {
-    
+
     switch (action.type) {
 
         case GET_ANIMAL_TYPES_SUCCESS:
@@ -34,7 +35,7 @@ export default function FiltersReducer(state = initialState, action) {
         case GET_BREEDS_BY_ANIMAL_TYPE_SUCCESS:
             return {
                 ...state,
-                animalTypeSelectedBreeds: action.payload.breeds
+                petsBreeds: action.payload.breeds
             }
 
         case SET_ANIMALS_TYPES_COLLAPSED:
@@ -54,6 +55,12 @@ export default function FiltersReducer(state = initialState, action) {
                 ...state,
                 animalsBreedsShowFrom: action.payload.data.from,
                 animalsBreedsShowUntil: action.payload.data.until,
+            }
+
+        case SET_BREEDS_SELECTED:
+            return {
+                ...state,
+                breedsSelected: action.payload.data
             }
 
         default:

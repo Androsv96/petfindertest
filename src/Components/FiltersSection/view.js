@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 /* Material-ui */
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Box from '@material-ui/core/Box';
+import DeleteIcon from '@material-ui/icons/Delete';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Checkbox from '@material-ui/core/CheckBox';
@@ -22,7 +23,7 @@ import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 /* Redux-actions */
 import {
     GET_ANIMAL_TYPES_BEGIN, SET_SELECTED_ANIMAL_TYPE_FILTER, GET_BREEDS_BY_ANIMAL_TYPE_BEGIN, SET_ANIMALS_TYPES_COLLAPSED,
-    SET_ANIMALS_BREEDS_COLLAPSED, SET_SHOW_MORE_BREEDS, GET_PETS_BY_TYPE_BEGIN,
+    SET_ANIMALS_BREEDS_COLLAPSED, SET_SHOW_MORE_BREEDS, GET_PETS_WITH_FILTER_BEGIN, SET_BREEDS_SELECTED,
 } from '../../Redux/Actions';
 
 /* Components */
@@ -31,8 +32,8 @@ import styles from './css.module.css';
 export default function Filters({ filtersReducer, actionDispatcher }) {
 
     /* Store data */
-    const { animalTypes, selectedAnimalTypeFilter, animalTypeSelectedBreeds, showAnimalsTypesCollapsed,
-        showANimalBreedsCollapsed, animalsBreedsShowFrom, animalsBreedsShowUntil, } = filtersReducer;
+    const { animalTypes, selectedAnimalTypeFilter, petsBreeds, showAnimalsTypesCollapsed,
+        showANimalBreedsCollapsed, animalsBreedsShowFrom, animalsBreedsShowUntil, breedsSelected, } = filtersReducer;
 
     /* Hooks */
     useEffect(() => {
@@ -42,15 +43,22 @@ export default function Filters({ filtersReducer, actionDispatcher }) {
     return (
         <List component="nav"
             className={styles.mainList}
-            subheader={
-                <ListSubheader component="div" className={styles.mainListTitle} >
-                    Filters
-            </ListSubheader>
+            subheader=
+            {
+                <ListSubheader component="div" >
+                    {
+                        breedsSelected.map((value, index) =>
+                            <Button key={index} startIcon={<DeleteIcon className={styles.filtersSelectedIcon} />} className={styles.filtersSelected}
+                                onClick={() => handleBreedsToogle(value)}>
+                                {value}
+                            </Button>)
+                    }
+                </ListSubheader>
             }
         >
 
             <ListItem button onClick={() => actionDispatcher(SET_ANIMALS_TYPES_COLLAPSED, { data: !showAnimalsTypesCollapsed })} >
-                <ListItemText primary="Type" /> {showAnimalsTypesCollapsed ? < ExpandLess /> : < ExpandMore />} </ListItem>
+                <ListItemText className={styles.mainListTitle} primary="Type" /> {showAnimalsTypesCollapsed ? < ExpandLess /> : < ExpandMore />} </ListItem>
             {
                 animalTypes.map((currObj, index) => {
                     return (
@@ -70,10 +78,10 @@ export default function Filters({ filtersReducer, actionDispatcher }) {
             }
 
             <ListItem button onClick={() => actionDispatcher(SET_ANIMALS_BREEDS_COLLAPSED, { data: !showANimalBreedsCollapsed })} >
-                <ListItemText primary="Breeds" /> {showANimalBreedsCollapsed ? < ExpandLess /> : < ExpandMore />} </ListItem>
+                <ListItemText className={styles.mainListTitle} primary="Breeds" /> {showANimalBreedsCollapsed ? < ExpandLess /> : < ExpandMore />} </ListItem>
 
             {
-                animalTypeSelectedBreeds.slice(animalsBreedsShowFrom, animalsBreedsShowUntil).map((currObj, index) => {
+                petsBreeds.slice(animalsBreedsShowFrom, animalsBreedsShowUntil).map((currObj, index) => {
                     return (
                         <Collapse in={showANimalBreedsCollapsed} timeout="auto" unmountOnExit key={index} >
                             <List component="div" disablePadding className={styles.subList} > {renderAnimalsBreeds(currObj, index,)} </List>
@@ -88,14 +96,15 @@ export default function Filters({ filtersReducer, actionDispatcher }) {
 
     function handleAnimalTypeSelected(typeSelected) {
         if (selectedAnimalTypeFilter !== typeSelected) {
-            actionDispatcher(GET_PETS_BY_TYPE_BEGIN, { type: typeSelected });
+            actionDispatcher(SET_BREEDS_SELECTED, { data: [] });//clean breeds already selected
             actionDispatcher(SET_SELECTED_ANIMAL_TYPE_FILTER, { data: typeSelected });
             actionDispatcher(GET_BREEDS_BY_ANIMAL_TYPE_BEGIN, { data: typeSelected });
+            actionDispatcher(GET_PETS_WITH_FILTER_BEGIN, { type: typeSelected });
         }
     }
 
     function renderAnimalsBreeds(currObj, index,) {
-        if (animalTypeSelectedBreeds.slice(animalsBreedsShowFrom, animalsBreedsShowUntil).length - 1 === index) {
+        if (petsBreeds.slice(animalsBreedsShowFrom, animalsBreedsShowUntil).length - 1 === index) {
             return (
                 <ListItem >
                     <Box className={styles.directionsArrowsContainer}>
@@ -103,7 +112,7 @@ export default function Filters({ filtersReducer, actionDispatcher }) {
                             startIcon={<NavigateBeforeIcon />}>
                             Previous
                             </Button>
-                        <Button variant="contained" className={styles.nextButton} onClick={() => onNextButtonClicked()} disabled={animalsBreedsShowUntil >= animalTypeSelectedBreeds.length}
+                        <Button variant="contained" className={styles.nextButton} onClick={() => onNextButtonClicked()} disabled={animalsBreedsShowUntil >= petsBreeds.length}
                             endIcon={<NavigateNextIcon />}>
                             Next
                         </Button>
@@ -112,12 +121,12 @@ export default function Filters({ filtersReducer, actionDispatcher }) {
             )
         } else {
             return (
-                <ListItem button onClick={() => alert("hola")}>
+                <ListItem button onClick={() => handleBreedsToogle(currObj.name)}>
                     <ListItemIcon>
                         <MuiThemeProvider theme={theme}>
                             <Checkbox
                                 edge="end"
-                                checked={true}
+                                checked={breedsSelected.indexOf(currObj.name) !== -1}
                             />
                         </MuiThemeProvider>
                     </ListItemIcon>
@@ -133,6 +142,18 @@ export default function Filters({ filtersReducer, actionDispatcher }) {
     function onPreviousButtonClicked() {
         actionDispatcher(SET_SHOW_MORE_BREEDS, { data: { from: animalsBreedsShowFrom + -10, until: animalsBreedsShowUntil - 10 } })
     }
+
+    function handleBreedsToogle(value) {
+        const currentIndex = breedsSelected.indexOf(value);
+        const newBreedsSelected = [...breedsSelected];
+
+        if (currentIndex === -1) newBreedsSelected.push(value);
+        else newBreedsSelected.splice(currentIndex, 1);
+
+        actionDispatcher(SET_BREEDS_SELECTED, { data: newBreedsSelected });
+        actionDispatcher(GET_PETS_WITH_FILTER_BEGIN, { type: selectedAnimalTypeFilter, breed: newBreedsSelected });
+    }
+
 }
 
 /* Overrides Mui default theme */
