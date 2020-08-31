@@ -1,5 +1,6 @@
 {
   "name": "petfindertest",
+  "homepage": "https://androsv96.github.io/petfindertest/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
