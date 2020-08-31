@@ -36,7 +36,7 @@ export default function Pets({ petsReducer, actionDispatcher }) {
                         <Grid item xs={12} sm={6} md={3} lg={3} key={index}>
                             <Paper className={styles.paper}>
                                 <Box className={styles.petImageContainer}>
-                                    <img src={currObj.photos.length > 0 ? currObj.photos[0].medium : PetImage} className={styles.petImage} alt="petImg" />
+                                    <img src={currObj.photos.length > 0 ? currObj.photos[0].large : PetImage} className={styles.petImage} alt="petImg" />
                                 </Box>
                                 <Box className={styles.nameContainer}>{currObj.name}</Box>
                             </Paper>

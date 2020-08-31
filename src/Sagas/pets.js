@@ -5,10 +5,13 @@ import { put, call, takeLeading, } from 'redux-saga/effects';
 import apiCall from '../ApiCall/';
 
 /* Constats */
-import { GET_ANIMALS_URL, GET_METHOD } from '../Utilities/Constants';
+import { GET_ANIMALS_URL, GET_METHOD, } from '../Utilities/Constants';
 
 /* Actions */
-import { SET_PROGRESS_ON, SET_PROGRESS_OFF, NEW_ERROR, GET_PETS_BEGIN, GET_PETS_SUCCESS, } from '../Redux/Actions';
+import {
+    SET_PROGRESS_ON, SET_PROGRESS_OFF, NEW_ERROR, GET_PETS_BEGIN, GET_PETS_SUCCESS,
+    GET_PETS_BY_TYPE_BEGIN, GET_PETS_BY_TYPE_SUCCESS,
+} from '../Redux/Actions';
 
 export function* getPets() {
     try {
@@ -25,9 +28,26 @@ export function* getPets() {
     } catch (exception) {
         yield put({ type: NEW_ERROR, payload: { message: exception.message, actionDispatched: GET_PETS_BEGIN } });
     }
-}// fin getProductsByProductGroup
+}
+
+export function* getPetsByType(action) {
+    try {
+
+        yield put({ type: SET_PROGRESS_ON });
+
+        const payload = yield call(apiCall, GET_ANIMALS_URL, GET_METHOD, action.payload);
+        if (payload.error) yield console.log(payload);
+        else yield put({ type: GET_PETS_BY_TYPE_SUCCESS, payload });
+
+        yield put({ type: SET_PROGRESS_OFF });
+
+    } catch (exception) {
+        yield put({ type: NEW_ERROR, payload: { message: exception.message, actionDispatched: GET_PETS_BY_TYPE_BEGIN } });
+    }
+}
 
 //watchers
 export default function* pets() {
     yield takeLeading(GET_PETS_BEGIN, getPets);
+    yield takeLeading(GET_PETS_BY_TYPE_BEGIN, getPetsByType);
 }

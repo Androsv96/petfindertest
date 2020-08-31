@@ -1,28 +1,29 @@
-.paper{
-    display: flex;
-    flex-direction: column;
-    height: 200px;
-    background-color: grey !important;
-    color: white !important;
+.paper {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  background-color: #bfbfbf !important;
+  color: #6603b7 !important;
 }
 
-.petImageContainer{
-    display: flex;
-    justify-content: center;
-    height: 80%;
-    align-items: center;
+.petImageContainer {
+  display: flex;
+  justify-content: center;
+  height: 80%;
+  align-items: center;
 }
 
-.petImage{
-   height: 150px; 
-   width: 150px;
-   border-radius: 50%;
+.petImage {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
 }
 
-.nameContainer{
-    display: flex;
-    justify-content: center;
-    font-weight: bold;
-    text-align: center;
-    margin: 0% 2% 0% 2%;
+.nameContainer {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  text-align: center;
+  margin: 0% 2% 0% 2%;
+  font-size: 20px;
 }

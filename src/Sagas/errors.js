@@ -29,7 +29,7 @@ export function* getNewError(action) {
     } catch (exception) {
         console.log(exception);
     }
-}// fin getProductsByProductGroup
+}
 
 //watchers
 export default function* errors() {

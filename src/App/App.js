@@ -23,7 +23,7 @@ function App({ progressOnReducer }) {
 
       <Box className={styles.subContainer}>
 
-        <Box className={styles.filterContainer}>
+        <Box className={styles.filterContainer} onScroll={(e) => test(e)}>
           <FiltersContainer />
         </Box>
 
@@ -35,6 +35,13 @@ function App({ progressOnReducer }) {
 
     </Box>
   );
+
+  function test(e) {
+    let element = e.target
+    if (element.scrollHeight - element.scrollTop === element.clientHeight) {
+
+    }
+  }
 }
 
 export default App;

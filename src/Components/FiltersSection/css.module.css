@@ -1,16 +1,31 @@
 .mainListTitle {
-    color: white !important;
+  color: #6603b7 !important;
+  font-size: 20px !important;
+  font-weight: bold !important;
 }
 
-.mainList{
-    background-color: grey;
-    color: white !important;
-    border-radius: 5px;
+.mainList {
+  background-color: #bfbfbf;
+  color: black !important;
+  border-radius: 5px;
 }
 
-.subList{
-    background-color: grey;
-    color: white !important;
-    height: 50px;
-    border-radius: 5px;
+.subList {
+  background-color: #bfbfbf;
+  color: black !important;
+  height: 50px;
+  border-radius: 5px;
+}
+
+.directionsArrowsContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.nextButton {
+  color: black !important;
+}
+.previousButton {
+  color: black !important;
 }
