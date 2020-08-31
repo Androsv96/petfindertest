@@ -19,7 +19,6 @@ export default function Pets({ petsReducer, actionDispatcher }) {
 
     /* Store data */
     const { petsData } = petsReducer;
-    console.log(petsData)
 
     /* Hooks */
     useEffect(() => {
@@ -28,17 +27,19 @@ export default function Pets({ petsReducer, actionDispatcher }) {
 
 
     return (
-        <Grid container spacing={1}>
+        <Grid container spacing={3}>
 
             {
                 petsData.map((currObj, index) => {
+                    console.log(currObj)
                     return (
-                        <Grid item xs={12} sm={6} md={3} lg={3} key={index}>
+                        <Grid item xs={6} sm={4} md={2} lg={2} key={index}>
                             <Paper className={styles.paper}>
                                 <Box className={styles.petImageContainer}>
                                     <img src={currObj.photos.length > 0 ? currObj.photos[0].large : PetImage} className={styles.petImage} alt="petImg" />
                                 </Box>
                                 <Box className={styles.nameContainer}>{currObj.name}</Box>
+                                <Box className={styles.breedContainer}>{currObj.breeds.primary}</Box>
                             </Paper>
                         </Grid>
                     )

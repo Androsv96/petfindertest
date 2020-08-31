@@ -110,11 +110,9 @@ export default function Filters({ filtersReducer, actionDispatcher }) {
                     <Box className={styles.directionsArrowsContainer}>
                         <Button variant="contained" className={styles.previousButton} onClick={() => onPreviousButtonClicked()} disabled={animalsBreedsShowFrom === 0}
                             startIcon={<NavigateBeforeIcon />}>
-                            Previous
-                            </Button>
+                        </Button>
                         <Button variant="contained" className={styles.nextButton} onClick={() => onNextButtonClicked()} disabled={animalsBreedsShowUntil >= petsBreeds.length}
                             endIcon={<NavigateNextIcon />}>
-                            Next
                         </Button>
                     </Box>
                 </ListItem>

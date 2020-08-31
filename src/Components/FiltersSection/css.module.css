@@ -14,16 +14,17 @@
 }
 
 .mainList {
-  background-color: #bfbfbf;
+  background-color: white;
   color: black !important;
   border-radius: 5px;
 }
 
 .subList {
-  background-color: #bfbfbf;
+  background-color: white;
   color: black !important;
   height: 50px;
   border-radius: 5px;
+  display: flex;
 }
 
 .directionsArrowsContainer {

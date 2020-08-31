@@ -1,8 +1,9 @@
 .paper {
   display: flex;
   flex-direction: column;
-  height: 200px;
-  background-color: #bfbfbf !important;
+  height: 335px;
+  width: 220px;
+  background-color: white !important;
   color: #6603b7 !important;
 }
 
@@ -14,9 +15,9 @@
 }
 
 .petImage {
-  height: 150px;
-  width: 150px;
-  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  border-radius: 4px;
 }
 
 .nameContainer {
@@ -26,4 +27,19 @@
   text-align: center;
   margin: 0% 2% 0% 2%;
   font-size: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.breedContainer {
+  font-size: 14px;
+  color: black;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis !important;
 }

@@ -1,27 +1,27 @@
-.mainContainer{
-    height: 100%;
-    overflow: hidden;
+.mainContainer {
+  height: 100%;
+  overflow: hidden;
 }
 
-.subContainer{
-    display: flex;
-    flex-direction: row;
-    height: calc(100% - 64px);
+.subContainer {
+  display: flex;
+  flex-direction: row;
+  height: calc(100% - 64px);
 }
 
-.filterContainer{
-    width: 30%;
-    height: 95%;
-    overflow: auto;
-    margin: 1%;
-    border-radius: 5px;
+.filterContainer {
+  width: 15%;
+  height: 95%;
+  overflow: auto;
+  margin: 1%;
+  border-radius: 5px;
 }
 
-.dataContainer{
-    width: 70%;
-    height: 95%;
-    overflow: auto;
-    margin: 1%;
-    overflow-x: hidden;
-    overflow-y: auto;
+.dataContainer {
+  width: 85%;
+  height: 95%;
+  overflow: auto;
+  margin: 1%;
+  overflow-x: hidden;
+  overflow-y: auto;
 }

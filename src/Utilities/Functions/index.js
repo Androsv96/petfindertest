@@ -10,17 +10,11 @@ export const joinQueryStringsToUrl = (url, queryStrings) => {
 
     Object.keys(queryStrings).forEach(key => {
 
-        // if (typeof (queryStrings[key]) === "object") {
-        //     newUrl.searchParams.append(key, queryStrings[key].map(value => `${value},`));
-        // }
-        // else newUrl.searchParams.append(key, queryStrings[key]);
-
         if (typeof (queryStrings[key]) === "object") {
             newUrl.searchParams.append(key, [...queryStrings[key]]);
         }
         else newUrl.searchParams.append(key, queryStrings[key]);
     });
 
-    console.log(newUrl)
     return newUrl;
 };
