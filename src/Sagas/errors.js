@@ -16,10 +16,16 @@ import { NEW_ERROR, } from '../Redux/Actions';
 export function* getNewError(action) {
     try {
 
-        if (action.payload.message === "Failed to fetch") {
-            const payload = yield call(apiCall, GET_TOKEN_URL, POST_METHOD,);
+        /* If token expires */
+        if (action.payload.message === "Failed to fetch" || action.payload.hint === "Access token is invalid") {
+
+            const payload = yield call(apiCall, GET_TOKEN_URL, POST_METHOD,); //get new token
             yield saveToken(payload.access_token);
-            yield put({ type: action.payload.actionDispatched });
+
+            /* Dispatch previous request again */
+            if (action.payload.action) yield put({ type: action.payload.actionDispatched, action: action.payload.action });
+            else yield put({ type: action.payload.actionDispatched });
+
         }
         else {
             alert("hubo un error :c");

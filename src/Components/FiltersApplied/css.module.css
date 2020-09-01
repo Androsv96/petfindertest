@@ -1,0 +1,23 @@
+.filtersTitle {
+  font-size: 20px !important;
+}
+
+.filtersSelected {
+  background-color: #6500b7 !important;
+  color: white !important;
+  margin: 1% !important;
+}
+
+.filtersSelectedIcon {
+  color: white;
+}
+
+.clearAllButton {
+  color: #6500b7 !important;
+  margin: 1% !important;
+  font-weight: bold;
+}
+
+.clearAllIcon {
+  color: #6500b7;
+}

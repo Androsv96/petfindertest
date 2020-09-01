@@ -3,14 +3,9 @@
   background-color: white;
 }
 
-.filtersSelected {
-  background-color: white !important;
-  color: black;
-  margin-right: 1% !important;
-}
-
-.filtersSelectedIcon {
-  color: red;
+.mainListTitle {
+  font-size: 20px !important; 
+  color: #6500b7 !important;
 }
 
 .mainList {

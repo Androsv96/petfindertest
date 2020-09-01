@@ -2,6 +2,7 @@
 import {
     GET_ANIMAL_TYPES_SUCCESS, SET_SELECTED_ANIMAL_TYPE_FILTER, GET_BREEDS_BY_ANIMAL_TYPE_SUCCESS,
     SET_ANIMALS_TYPES_COLLAPSED, SET_ANIMALS_BREEDS_COLLAPSED, SET_SHOW_MORE_BREEDS, SET_BREEDS_SELECTED,
+    SET_CURRENT_PAGE,
 } from '../Actions';
 
 const initialState = {
@@ -13,7 +14,7 @@ const initialState = {
     animalsBreedsShowFrom: 0,
     animalsBreedsShowUntil: 10,
     breedsSelected: [],
-
+    currentPage: 1,
 }
 
 export default function FiltersReducer(state = initialState, action) {
@@ -61,6 +62,12 @@ export default function FiltersReducer(state = initialState, action) {
             return {
                 ...state,
                 breedsSelected: action.payload.data
+            }
+
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.payload.data
             }
 
         default:

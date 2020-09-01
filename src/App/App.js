@@ -10,6 +10,7 @@ import styles from './css.module.css';
 import ProgressOn from '../Components/ProgressOn/view';
 import FiltersContainer from '../Components/FiltersSection';
 import PetsContainer from '../Components/Pets/';
+import FiltersAppliedContainer from '../Components/FiltersApplied';
 
 function App({ progressOnReducer }) {
 
@@ -23,11 +24,12 @@ function App({ progressOnReducer }) {
 
       <Box className={styles.subContainer}>
 
-        <Box className={styles.filterContainer} onScroll={(e) => test(e)}>
+        <Box className={styles.filterContainer}>
           <FiltersContainer />
         </Box>
 
         <Box className={styles.dataContainer}>
+          <FiltersAppliedContainer />
           <PetsContainer />
         </Box>
 
@@ -36,12 +38,6 @@ function App({ progressOnReducer }) {
     </Box>
   );
 
-  function test(e) {
-    let element = e.target
-    if (element.scrollHeight - element.scrollTop === element.clientHeight) {
-
-    }
-  }
 }
 
 export default App;

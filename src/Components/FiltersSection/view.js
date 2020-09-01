@@ -4,7 +4,6 @@ import React, { useEffect } from 'react';
 /* Material-ui */
 import ListSubheader from '@material-ui/core/ListSubheader';
 import Box from '@material-ui/core/Box';
-import DeleteIcon from '@material-ui/icons/Delete';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import Checkbox from '@material-ui/core/CheckBox';
@@ -43,19 +42,7 @@ export default function Filters({ filtersReducer, actionDispatcher }) {
     return (
         <List component="nav"
             className={styles.mainList}
-            subheader=
-            {
-                <ListSubheader component="div" >
-                    {
-                        breedsSelected.map((value, index) =>
-                            <Button key={index} startIcon={<DeleteIcon className={styles.filtersSelectedIcon} />} className={styles.filtersSelected}
-                                onClick={() => handleBreedsToogle(value)}>
-                                {value}
-                            </Button>)
-                    }
-                </ListSubheader>
-            }
-        >
+            subheader={<ListSubheader component="div" className={styles.mainListTitle}>Filters</ListSubheader>}>
 
             <ListItem button onClick={() => actionDispatcher(SET_ANIMALS_TYPES_COLLAPSED, { data: !showAnimalsTypesCollapsed })} >
                 <ListItemText className={styles.mainListTitle} primary="Type" /> {showAnimalsTypesCollapsed ? < ExpandLess /> : < ExpandMore />} </ListItem>

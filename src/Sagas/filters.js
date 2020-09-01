@@ -1,5 +1,5 @@
 /* Sagas */
-import { put, call, takeLeading, } from 'redux-saga/effects';
+import { put, call, takeLatest, } from 'redux-saga/effects';
 
 /* api */
 import apiCall from '../ApiCall/';
@@ -50,6 +50,6 @@ export function* getBreedsByAnimalTypeSelected(action) {
 
 //watchers
 export default function* filters() {
-    yield takeLeading(GET_ANIMAL_TYPES_BEGIN, getFilters);
-    yield takeLeading(GET_BREEDS_BY_ANIMAL_TYPE_BEGIN, getBreedsByAnimalTypeSelected);
+    yield takeLatest(GET_ANIMAL_TYPES_BEGIN, getFilters);
+    yield takeLatest(GET_BREEDS_BY_ANIMAL_TYPE_BEGIN, getBreedsByAnimalTypeSelected);
 }

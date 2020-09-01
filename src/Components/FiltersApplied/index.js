@@ -9,12 +9,12 @@ import { actionDispatcher } from '../../Redux/Actions';
 /* Components */
 import view from "./view";
 
-const mapStateToProps = ({ petsReducer, filtersReducer, }) => ({
-    petsReducer, filtersReducer,
+const mapStateToProps = ({ filtersReducer, }) => ({
+    filtersReducer,
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ actionDispatcher }, dispatch);
 
-const PetsContainer = connect(mapStateToProps, mapDispatchToProps)(view);
+const FiltersAppliedContainer = connect(mapStateToProps, mapDispatchToProps)(view);
 
-export default PetsContainer;
+export default FiltersAppliedContainer;

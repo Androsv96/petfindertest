@@ -1,5 +1,5 @@
 /* Sagas */
-import { put, call, takeLeading, } from 'redux-saga/effects';
+import { put, call, takeLatest, } from 'redux-saga/effects';
 
 /* api */
 import apiCall from '../ApiCall/';
@@ -19,8 +19,7 @@ export function* getPets() {
         yield put({ type: SET_PROGRESS_ON });
 
         const payload = yield call(apiCall, GET_ANIMALS_URL, GET_METHOD,);
-
-        if (payload.error) yield console.log(payload);
+        if (payload.status) put({ type: NEW_ERROR, payload: { ...payload, actionDispatched: GET_PETS_BEGIN } });
         else yield put({ type: GET_PETS_SUCCESS, payload });
 
         yield put({ type: SET_PROGRESS_OFF });
@@ -37,7 +36,7 @@ export function* getPetsWithFilter(action) {
 
         const payload = yield call(apiCall, GET_ANIMALS_URL, GET_METHOD, action.payload);
 
-        if (payload.error) yield console.log(payload);
+        if (payload.status) put({ type: NEW_ERROR, payload: { ...payload, actionDispatched: GET_PETS_WITH_FILTER_BEGIN, action } });
         else yield put({ type: GET_PETS_WITH_FILTERS_SUCCESS, payload });
 
         yield put({ type: SET_PROGRESS_OFF });
@@ -49,6 +48,6 @@ export function* getPetsWithFilter(action) {
 
 //watchers
 export default function* pets() {
-    yield takeLeading(GET_PETS_BEGIN, getPets);
-    yield takeLeading(GET_PETS_WITH_FILTER_BEGIN, getPetsWithFilter);
+    yield takeLatest(GET_PETS_BEGIN, getPets);
+    yield takeLatest(GET_PETS_WITH_FILTER_BEGIN, getPetsWithFilter);
 }
