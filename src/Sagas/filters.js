@@ -19,7 +19,7 @@ export function* getFilters() {
         yield put({ type: SET_PROGRESS_ON });
 
         const payload = yield call(apiCall, GET_ANIMALS_TYPES_URL, GET_METHOD,);
-        if (payload.error) yield console.log(payload);
+        if (payload.status) yield put({ type: NEW_ERROR, payload: { ...payload, actionDispatched: GET_ANIMAL_TYPES_BEGIN } });
         else yield put({ type: GET_ANIMAL_TYPES_SUCCESS, payload });
 
         yield put({ type: SET_PROGRESS_OFF });
@@ -38,7 +38,7 @@ export function* getBreedsByAnimalTypeSelected(action) {
 
         const payload = yield call(apiCall, GET_NEW_ANIMAL_BREED_URL, GET_METHOD,);
 
-        if (payload.error) yield console.log(payload);
+        if (payload.status) yield put({ type: NEW_ERROR, payload: { ...payload, actionDispatched: GET_BREEDS_BY_ANIMAL_TYPE_BEGIN, action } });
         else yield put({ type: GET_BREEDS_BY_ANIMAL_TYPE_SUCCESS, payload });
 
         yield put({ type: SET_PROGRESS_OFF });

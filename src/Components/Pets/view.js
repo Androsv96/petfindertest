@@ -23,7 +23,6 @@ export default function Pets({ petsReducer, filtersReducer, actionDispatcher }) 
     /* Store data */
     const { petsData, petsPagination, } = petsReducer;
     const { currentPage, selectedAnimalTypeFilter, breedsSelected, } = filtersReducer;
-    console.log(petsPagination)
 
     /* Hooks */
     useEffect(() => {

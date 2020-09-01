@@ -30,7 +30,8 @@ export default function FiltersReducer(state = initialState, action) {
         case SET_SELECTED_ANIMAL_TYPE_FILTER:
             return {
                 ...state,
-                selectedAnimalTypeFilter: action.payload.data
+                selectedAnimalTypeFilter: action.payload.data,
+                currentPage: 1,
             }
 
         case GET_BREEDS_BY_ANIMAL_TYPE_SUCCESS:
@@ -61,7 +62,8 @@ export default function FiltersReducer(state = initialState, action) {
         case SET_BREEDS_SELECTED:
             return {
                 ...state,
-                breedsSelected: action.payload.data
+                breedsSelected: action.payload.data,
+                currentPage: 1,
             }
 
         case SET_CURRENT_PAGE:
