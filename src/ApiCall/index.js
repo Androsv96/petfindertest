@@ -21,6 +21,7 @@ export default async function apiCall(url, method, data) {
     } else if (method === GET_METHOD) {
 
         let token = getToken();
+
         let newUrl = new URL(url);
         if (data) {
             newUrl = joinQueryStringsToUrl(url, data);

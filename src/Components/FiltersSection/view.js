@@ -83,7 +83,6 @@ export default function Filters({ filtersReducer, actionDispatcher }) {
 
     function handleAnimalTypeSelected(typeSelected) {
         if (selectedAnimalTypeFilter !== typeSelected) {
-            actionDispatcher(SET_BREEDS_SELECTED, { data: [] });//clean breeds already selected
             actionDispatcher(SET_SELECTED_ANIMAL_TYPE_FILTER, { data: typeSelected });
             actionDispatcher(GET_BREEDS_BY_ANIMAL_TYPE_BEGIN, { data: typeSelected });
             actionDispatcher(GET_PETS_WITH_FILTER_BEGIN, { type: typeSelected });

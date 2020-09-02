@@ -15,7 +15,7 @@ import { NEW_ERROR, } from '../Redux/Actions';
 
 export function* getNewError(action) {
     try {
-
+        console.log(action)
         /* If token expires */
         if (action.payload.message === "Failed to fetch" || action.payload.hint === "Access token is invalid") {
 

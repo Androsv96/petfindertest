@@ -32,6 +32,7 @@ export default function FiltersReducer(state = initialState, action) {
                 ...state,
                 selectedAnimalTypeFilter: action.payload.data,
                 currentPage: 1,
+                breedsSelected: []
             }
 
         case GET_BREEDS_BY_ANIMAL_TYPE_SUCCESS:

@@ -39,7 +39,7 @@ export default function Pets({ petsReducer, filtersReducer, actionDispatcher }) 
                         petsData.map((currObj, index) => {
                             return (
                                 <Grid item xs={12} sm={6} md={6} lg={4} key={index}>
-                                    <Paper className={styles.paper}>
+                                    <Paper className={styles.paper} onClick={() => console.log(currObj)}>
                                         <Box className={styles.petImageContainer}>
                                             <img src={currObj.photos.length > 0 ? currObj.photos[0].large : PetImage} className={styles.petImage} alt="petImg" />
                                         </Box>

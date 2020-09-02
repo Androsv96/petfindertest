@@ -3,6 +3,7 @@ import React from 'react';
 
 /* Material-ui */
 import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Typography from '@material-ui/core/Typography';
 import ClearIcon from '@material-ui/icons/Clear';
@@ -19,27 +20,28 @@ export default function Pets({ filtersReducer, actionDispatcher }) {
     const { selectedAnimalTypeFilter, breedsSelected, } = filtersReducer;
 
     return (
-        <>
+        <Box>
             {
                 breedsSelected.length > 0 ?
                     <>
                         <Typography className={styles.filtersTitle}>Filters applied</Typography>
                         {
                             breedsSelected.map((value, index) =>
-                                <Button variant="contained" key={index} endIcon={<ClearIcon className={styles.filtersSelectedIcon} />} className={styles.filtersSelected}
-                                    onClick={() => deleteFilter(value)}>
+                                <Button variant="contained" key={index} endIcon={<ClearIcon className={styles.filtersSelectedIcon} />}
+                                    onClick={() => deleteFilter(value)} className={styles.filtersSelected}>
                                     {value}
                                 </Button>
                             )
                         }
-                        <Button variant="text" endIcon={<DeleteIcon className={styles.clearAllIcon} />} className={styles.clearAllButton} onClick={() => deleteAllFilters()}>
+                        <Button variant="text" endIcon={<DeleteIcon className={styles.clearAllIcon} />} className={styles.clearAllButton}
+                            onClick={() => deleteAllFilters()} >
                             Clear all
                         </Button>
                     </>
                     :
                     <></>
             }
-        </>
+        </Box>
     )
 
     function deleteFilter(value) {

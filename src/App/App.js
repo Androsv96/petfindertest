@@ -11,6 +11,7 @@ import ProgressOn from '../Components/ProgressOn/view';
 import FiltersContainer from '../Components/FiltersSection';
 import PetsContainer from '../Components/Pets/';
 import FiltersAppliedContainer from '../Components/FiltersApplied';
+import PetDetailContainer from '../Components/PetDetail';
 
 function App({ progressOnReducer }) {
 
