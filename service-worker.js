@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/petfindertest/precache-manifest.7a6640cc480246b1f9c39597b6e0e0b1.js"
+  "/petfindertest/precache-manifest.fb4f7a530fdf0451efbf4ff32164036b.js"
 );
 
 self.addEventListener('message', (event) => {
