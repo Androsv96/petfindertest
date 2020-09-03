@@ -16,11 +16,11 @@ import { SET_BREEDS_SELECTED, GET_PETS_WITH_FILTER_BEGIN, } from '../../Redux/Ac
 
 export default function Pets({ filtersReducer, actionDispatcher }) {
 
-    /* Store data */
+    /* reducers data */
     const { selectedAnimalTypeFilter, breedsSelected, } = filtersReducer;
 
     return (
-        <Box>
+        <Box className={styles.mainContainer}>
             {
                 breedsSelected.length > 0 ?
                     <>

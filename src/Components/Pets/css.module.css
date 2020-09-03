@@ -1,3 +1,7 @@
+.mainContainer {
+  margin: 1%;
+}
+
 .paper {
   display: flex;
   flex-direction: column;
@@ -5,6 +9,11 @@
   width: 300px;
   background-color: white !important;
   color: #6603b7 !important;
+}
+
+.petDataGrid {
+  display: flex;
+  justify-content: center;
 }
 
 .petImageContainer {

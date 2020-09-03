@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 /* Components */
 import App from "./App";
 
-const mapStateToProps = ({ progressOnReducer }) => ({
-    progressOnReducer
+const mapStateToProps = ({ progressOnReducer, filtersReducer }) => ({
+    progressOnReducer, filtersReducer
 });
 
 const AppContainer = connect(mapStateToProps)(App);

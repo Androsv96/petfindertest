@@ -17,6 +17,9 @@ export const SET_ANIMALS_BREEDS_COLLAPSED = "SET_ANIMALS_BREEDS_COLLAPSED";
 export const SET_SHOW_MORE_BREEDS = "SET_SHOW_MORE_BREEDS";
 export const SET_BREEDS_SELECTED = "SET_BREEDS_SELECTED";
 export const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+export const SET_SHOW_PET_DETAIL = "SET_SHOW_PET_DETAIL";
+export const SET_SELECTED_PET = "SET_SELECTED_PET";
+export const SET_SHOW_FILTERS_SECTION = "SET_SHOW_FILTERS_SECTION";
 export const NEW_ERROR = "NEW_ERROR";
 
 export const actionDispatcher = (action, payload) => ({

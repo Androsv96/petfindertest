@@ -1,3 +1,7 @@
+.mainContainer {
+  margin: 1%;
+}
+
 .filtersTitle {
   font-size: 20px !important;
 }
@@ -20,4 +24,12 @@
 
 .clearAllIcon {
   color: #6500b7;
+}
+
+@media only screen and (max-width: 600px) {
+  .mainContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
 }

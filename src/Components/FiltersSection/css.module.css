@@ -3,9 +3,15 @@
   background-color: white;
 }
 
-.mainListTitle {
-  font-size: 20px !important; 
-  color: #6500b7 !important;
+.logoContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  height: 70%;
+  width: 10em;
+  margin-top: 2%;
 }
 
 .mainList {
@@ -20,6 +26,10 @@
   height: 50px;
   border-radius: 5px;
   display: flex;
+}
+
+.subListText {
+  font-size: 12px !important;
 }
 
 .directionsArrowsContainer {

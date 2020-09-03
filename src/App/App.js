@@ -3,33 +3,35 @@ import React from 'react';
 
 /* Material-ui */
 import Box from '@material-ui/core/Box';
+import Paper from '@material-ui/core/Paper';
 
 /* Components */
-import AppBar from '../Components/Appbar/view';
+import AppbarContainer from '../Components/Appbar/';
 import styles from './css.module.css';
 import ProgressOn from '../Components/ProgressOn/view';
 import FiltersContainer from '../Components/FiltersSection';
 import PetsContainer from '../Components/Pets/';
 import FiltersAppliedContainer from '../Components/FiltersApplied';
-import PetDetailContainer from '../Components/PetDetail';
 
-function App({ progressOnReducer }) {
+function App({ progressOnReducer, filtersReducer }) {
 
+  /* store data */
   const { visible } = progressOnReducer;
-  if (visible) return <ProgressOn />
+  const { showFiltersSection } = filtersReducer;
 
+  if (visible) return <ProgressOn />
 
   return (
     <Box className={styles.mainContainer}>
-      <AppBar />
 
       <Box className={styles.subContainer}>
 
-        <Box className={styles.filterContainer}>
+        <Paper className={showFiltersSection ? styles.filterContainer : styles.hideFilterContainerr} >
           <FiltersContainer />
-        </Box>
+        </Paper>
 
         <Box className={styles.dataContainer}>
+          <AppbarContainer />
           <FiltersAppliedContainer />
           <PetsContainer />
         </Box>

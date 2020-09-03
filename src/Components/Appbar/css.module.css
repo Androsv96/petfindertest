@@ -1,7 +1,27 @@
-.appbar{
-    background-color: whitesmoke !important;
+.appbar {
+  background-color: whitesmoke !important;
 }
-.logo{
-    height: 70%;
-    width: 10em;
+
+.menuContainer {
+  display: none;
+}
+
+.menuIcon {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .menuContainer {
+    border-radius: 50%;
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .menuIcon {
+    color: black;
+  }
 }

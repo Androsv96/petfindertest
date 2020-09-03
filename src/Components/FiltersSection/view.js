@@ -28,9 +28,12 @@ import {
 /* Components */
 import styles from './css.module.css';
 
+/* Images */
+import AppLogo from '../../Imgs/logo.png'
+
 export default function Filters({ filtersReducer, actionDispatcher }) {
 
-    /* Store data */
+    /* reducers data */
     const { animalTypes, selectedAnimalTypeFilter, petsBreeds, showAnimalsTypesCollapsed,
         showANimalBreedsCollapsed, animalsBreedsShowFrom, animalsBreedsShowUntil, breedsSelected, } = filtersReducer;
 
@@ -42,7 +45,7 @@ export default function Filters({ filtersReducer, actionDispatcher }) {
     return (
         <List component="nav"
             className={styles.mainList}
-            subheader={<ListSubheader component="div" className={styles.mainListTitle}>Filters</ListSubheader>}>
+            subheader={<ListSubheader component="div" className={styles.logoContainer}><img src={AppLogo} alt="Logo" className={styles.logo} /></ListSubheader>}>
 
             <ListItem button onClick={() => actionDispatcher(SET_ANIMALS_TYPES_COLLAPSED, { data: !showAnimalsTypesCollapsed })} >
                 <ListItemText className={styles.mainListTitle} primary="Type" /> {showAnimalsTypesCollapsed ? < ExpandLess /> : < ExpandMore />} </ListItem>
@@ -71,7 +74,7 @@ export default function Filters({ filtersReducer, actionDispatcher }) {
                 petsBreeds.slice(animalsBreedsShowFrom, animalsBreedsShowUntil).map((currObj, index) => {
                     return (
                         <Collapse in={showANimalBreedsCollapsed} timeout="auto" unmountOnExit key={index} >
-                            <List component="div" disablePadding className={styles.subList} > {renderAnimalsBreeds(currObj, index,)} </List>
+                            <List component="div" className={styles.subList} > {renderAnimalsBreeds(currObj, index,)} </List>
                         </Collapse>
                     )
                 })
@@ -114,7 +117,7 @@ export default function Filters({ filtersReducer, actionDispatcher }) {
                             />
                         </MuiThemeProvider>
                     </ListItemIcon>
-                    <ListItemText primary={currObj.name} />
+                    <ListItemText primary={currObj.name} className={styles.subListText} />
                 </ListItem>
             )
         }

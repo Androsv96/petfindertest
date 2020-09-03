@@ -1,5 +1,5 @@
 /* React */
-import React, { useEffect } from 'react';
+import React, { useEffect, } from 'react';
 
 /* Material-ui */
 import Paper from '@material-ui/core/Paper';
@@ -10,17 +10,18 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
 
 /* Redux-actions */
-import { GET_PETS_BEGIN, GET_PETS_WITH_FILTER_BEGIN, SET_CURRENT_PAGE, } from '../../Redux/Actions';
+import { GET_PETS_BEGIN, GET_PETS_WITH_FILTER_BEGIN, SET_CURRENT_PAGE, SET_SHOW_PET_DETAIL, SET_SELECTED_PET, } from '../../Redux/Actions';
 
 /* Components */
 import styles from './css.module.css';
+import PetDetail from '../PetDetail';
 
 /* Images */
-import PetImage from '../../Imgs/pet.png'
+import PetImage from '../../Imgs/pet.png';
 
 export default function Pets({ petsReducer, filtersReducer, actionDispatcher }) {
 
-    /* Store data */
+    /* reducers data */
     const { petsData, petsPagination, } = petsReducer;
     const { currentPage, selectedAnimalTypeFilter, breedsSelected, } = filtersReducer;
 
@@ -31,15 +32,15 @@ export default function Pets({ petsReducer, filtersReducer, actionDispatcher }) 
 
 
     return (
-        <Box>
+        <Box className={styles.mainContainer}>
             <Grid container spacing={3} >
 
                 {
                     petsData.length > 0 ?
                         petsData.map((currObj, index) => {
                             return (
-                                <Grid item xs={12} sm={6} md={6} lg={4} key={index}>
-                                    <Paper className={styles.paper} onClick={() => console.log(currObj)}>
+                                <Grid item xs={12} sm={12} md={6} lg={3} key={index} className={styles.petDataGrid}>
+                                    <Paper className={styles.paper} onClick={() => handlePetSelected(currObj)} >
                                         <Box className={styles.petImageContainer}>
                                             <img src={currObj.photos.length > 0 ? currObj.photos[0].large : PetImage} className={styles.petImage} alt="petImg" />
                                         </Box>
@@ -69,7 +70,9 @@ export default function Pets({ petsReducer, filtersReducer, actionDispatcher }) 
 
             </Grid>
 
-        </Box>
+            <PetDetail />
+
+        </Box >
     )
 
     function onNextPageClicked() {
@@ -80,5 +83,10 @@ export default function Pets({ petsReducer, filtersReducer, actionDispatcher }) 
     function onPreviousPageClicked() {
         actionDispatcher(SET_CURRENT_PAGE, { data: currentPage - 1 });
         actionDispatcher(GET_PETS_WITH_FILTER_BEGIN, { type: selectedAnimalTypeFilter, breed: breedsSelected, page: currentPage - 1 });
+    }
+
+    function handlePetSelected(petData) {
+        actionDispatcher(SET_SHOW_PET_DETAIL, { data: true })
+        actionDispatcher(SET_SELECTED_PET, { data: petData })
     }
 }
