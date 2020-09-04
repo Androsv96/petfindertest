@@ -5,7 +5,6 @@ import React, { forwardRef } from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Slide from '@material-ui/core/Slide';
 import CancelIcon from '@material-ui/icons/Cancel';
@@ -27,7 +26,7 @@ export default function PetDetail({ petsReducer, actionDispatcher }) {
 
     /* reducers data */
     const { petsShowDetail, petSelected, } = petsReducer;
-    console.log(petSelected)
+
     return (
         <Dialog fullScreen open={petsShowDetail} TransitionComponent={Transition} >
             <Box className={styles.mainContainer}>

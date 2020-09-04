@@ -16,7 +16,7 @@ const setup = (initialState = {}) => {
 
   const wrapper = mount(<Provider store={store}><MyComponent /></Provider>)
   let AppbarContainer = wrapper.find('AppbarContainer');
-  expect(AppbarContainer.getElement("div"))
+  
 }
 
 setup()

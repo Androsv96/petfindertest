@@ -20,6 +20,9 @@ import ProgressOn from '../ProgressOn/view';
 /* Images */
 import PetImage from '../../Imgs/pet.png';
 
+/* Functions */
+import { decodeHtml } from '../../Utilities/Functions';
+
 export default function Pets({ petsReducer, filtersReducer, utilitiesReducer, actionDispatcher }) {
 
     /* reducers data */
@@ -47,7 +50,7 @@ export default function Pets({ petsReducer, filtersReducer, utilitiesReducer, ac
                                             <Box className={styles.petImageContainer}>
                                                 <img src={currObj.photos.length > 0 ? currObj.photos[0].large : PetImage} className={styles.petImage} alt="petImg" />
                                             </Box>
-                                            <Box className={styles.nameContainer}>{currObj.name}</Box>
+                                            <Box className={styles.nameContainer}>{decodeHtml(currObj.name)}</Box>
                                             <Box className={styles.breedContainer}>{currObj.breeds.primary}</Box>
                                         </Paper>
                                     </Grid>
@@ -94,4 +97,6 @@ export default function Pets({ petsReducer, filtersReducer, utilitiesReducer, ac
         actionDispatcher(SET_SHOW_PET_DETAIL, { data: true })
         actionDispatcher(SET_SELECTED_PET, { data: petData })
     }
+
+
 }

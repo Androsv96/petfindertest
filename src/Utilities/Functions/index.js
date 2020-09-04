@@ -4,6 +4,7 @@ export const getToken = () => localStorage.getItem("token", "no-token");
 
 export const clearLocalStorage = () => localStorage.clear();
 
+/* joins url with params (key:value) */
 export const joinQueryStringsToUrl = (url, queryStrings) => {
 
     let newUrl = new URL(url);
@@ -18,3 +19,10 @@ export const joinQueryStringsToUrl = (url, queryStrings) => {
 
     return newUrl;
 };
+
+/* Decoding text from api because of special characters */
+export const decodeHtml = (text) => {
+    let txt = document.createElement("textarea");
+    txt.innerHTML = text;
+    return txt.value;
+}
