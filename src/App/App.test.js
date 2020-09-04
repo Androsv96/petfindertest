@@ -9,14 +9,19 @@ import { configure } from 'enzyme';
 
 configure({ adapter: new Adapter() });
 
-const setup = (initialState = {}) => {
+const setup = () => {
 
   let store = configureStore();
   store.runSaga(rootSaga);
 
   const wrapper = mount(<Provider store={store}><MyComponent /></Provider>)
-  let AppbarContainer = wrapper.find('AppbarContainer');
-  
+  return { wrapper }
 }
 
-setup()
+describe('App component test', () => {
+  test('Testing initial store data', () => {
+    const { wrapper } = setup();
+    let hasInternetConnection = wrapper.find('hasInternetConnection');
+    expect(hasInternetConnection).toBe(false)
+  });
+})

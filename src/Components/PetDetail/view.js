@@ -16,7 +16,7 @@ import { SET_SHOW_PET_DETAIL, } from '../../Redux/Actions';
 
 /* Components */
 import styles from './css.module.css';
-import { PROPERTIES_TEXT, ABOUT_TEXT, MEET_TEXT, HOUSE_TRAINED_TEXT, } from '../../Utilities/Constants';
+import { PROPERTIES_TEXT, ABOUT_TEXT, MEET_TEXT, HOUSE_TRAINED_TEXT, NOT_TRAINED_TEXT, } from '../../Utilities/Constants';
 
 /* react carousel */
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -76,7 +76,12 @@ export default function PetDetail({ petsReducer, actionDispatcher }) {
                                     <hr />
                                     <h2>{ABOUT_TEXT}</h2>
                                     {petSelected.coat ? <Chip avatar={<PetsIcon className={styles.petPropetiesAvatar} />} label={petSelected.coat} className={styles.petProperties} /> : <></>}
-                                    {petSelected.attributes && petSelected.attributes.house_trained ? <Chip avatar={<PetsIcon className={styles.petPropetiesAvatar} />} label={HOUSE_TRAINED_TEXT} className={styles.petProperties} /> : <></>}
+                                    {
+                                        petSelected.attributes && petSelected.attributes.house_trained ?
+                                            <Chip avatar={<PetsIcon className={styles.petPropetiesAvatar} />} label={HOUSE_TRAINED_TEXT} className={styles.petProperties} />
+                                            :
+                                            <Chip avatar={<PetsIcon className={styles.petPropetiesAvatar} />} label={NOT_TRAINED_TEXT} className={styles.petProperties} />
+                                    }
                                     <hr />
 
 

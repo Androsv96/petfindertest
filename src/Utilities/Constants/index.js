@@ -32,3 +32,4 @@ export const PROPERTIES_TEXT = "Properties";
 export const ABOUT_TEXT = "About";
 export const MEET_TEXT = "Meet";
 export const HOUSE_TRAINED_TEXT = "House trained";
+export const NOT_TRAINED_TEXT = "Not trained";
