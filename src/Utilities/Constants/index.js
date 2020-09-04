@@ -1,8 +1,8 @@
 /* General */
 export const POST_METHOD = "POST";
 export const GET_METHOD = "GET";
-export const API_KEY = "QjZE3qZXQnpsJ2iAWJLCv4AaTGJO8r4ki71V6g3RLZ8ZBu4cuG";
-export const SECRET_KEY = "9i1e56VXsfo1Kn0b2c73VdFlCWCLJuRwEXgqycxh";
+export const API_KEY = "ddn3WGH5P1rImjefKPp2Di4EIGwUecO4MxmLEKMtlAuT9FGrJN";
+export const SECRET_KEY = "mNnqjPgX2p4SJnNqldYK7BozzcxDYnrmXHHXrWGb";
 
 /* Urls */
 export const GET_TOKEN_URL = "https://api.petfinder.com/v2/oauth2/token/";

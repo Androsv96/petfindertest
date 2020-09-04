@@ -4,10 +4,10 @@ import { combineReducers } from 'redux';
 /* Reducers */
 import petsReducer from './petsReducer';
 import filtersReducer from './filtersReducer';
-import progressOnReducer from './progressOnReducer';
+import utilitiesReducer from './utilitiesReducer';
 
 export default combineReducers({
     petsReducer,
     filtersReducer,
-    progressOnReducer,
+    utilitiesReducer,
 });

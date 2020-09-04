@@ -8,39 +8,54 @@ import Paper from '@material-ui/core/Paper';
 /* Components */
 import AppbarContainer from '../Components/Appbar/';
 import styles from './css.module.css';
-import ProgressOn from '../Components/ProgressOn/view';
 import FiltersContainer from '../Components/FiltersSection';
 import PetsContainer from '../Components/Pets/';
 import FiltersAppliedContainer from '../Components/FiltersApplied';
+import NoInternetConnectionContainer from '../Components/NoInternetConnection/';
+import ProgressOn from '../Components/ProgressOn/view';
 
-function App({ progressOnReducer, filtersReducer }) {
+function App({ utilitiesReducer, filtersReducer, petsReducer, }) {
 
   /* store data */
-  const { visible } = progressOnReducer;
-  const { showFiltersSection } = filtersReducer;
+  const { hasInternetConnection } = utilitiesReducer;
+  const { showFiltersSection, showFiltersProgressOn } = filtersReducer;
+  const { showPetsProgressOn, } = petsReducer;
 
-  if (visible) return <ProgressOn />
+  if (!hasInternetConnection) return <NoInternetConnectionContainer />
 
-  return (
-    <Box className={styles.mainContainer}>
 
-      <Box className={styles.subContainer}>
+  else
+    return (
+      <Box className={styles.mainContainer}>
 
-        <Paper className={showFiltersSection ? styles.filterContainer : styles.hideFilterContainerr} >
-          <FiltersContainer />
-        </Paper>
+        <Box className={styles.subContainer}>
 
-        <Box className={styles.dataContainer}>
-          <AppbarContainer />
-          <FiltersAppliedContainer />
-          <PetsContainer />
+          <Paper className={showFiltersSection ? styles.filterContainer : styles.hideFilterContainerr} >
+            {
+              showFiltersProgressOn ?
+                <ProgressOn />
+                :
+                <FiltersContainer />
+            }
+          </Paper>
+
+          <Box className={styles.dataContainer}>
+            {
+              showPetsProgressOn ?
+                <ProgressOn />
+                :
+                <>
+                  <AppbarContainer />
+                  <FiltersAppliedContainer />
+                  <PetsContainer />
+                </>
+            }
+          </Box>
+
         </Box>
 
       </Box>
-
-    </Box>
-  );
-
+    );
 }
 
 export default App;

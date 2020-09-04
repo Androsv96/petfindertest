@@ -17,12 +17,13 @@ import { ThemeProvider as MuiThemeProvider } from "@material-ui/core/styles";
 import { createMuiTheme } from "@material-ui/core/styles";
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 
 
 /* Redux-actions */
 import {
     GET_ANIMAL_TYPES_BEGIN, SET_SELECTED_ANIMAL_TYPE_FILTER, GET_BREEDS_BY_ANIMAL_TYPE_BEGIN, SET_ANIMALS_TYPES_COLLAPSED,
-    SET_ANIMALS_BREEDS_COLLAPSED, SET_SHOW_MORE_BREEDS, GET_PETS_WITH_FILTER_BEGIN, SET_BREEDS_SELECTED,
+    SET_ANIMALS_BREEDS_COLLAPSED, SET_SHOW_MORE_BREEDS, GET_PETS_WITH_FILTER_BEGIN, SET_BREEDS_SELECTED, SET_SHOW_FILTERS_SECTION,
 } from '../../Redux/Actions';
 
 /* Components */
@@ -34,8 +35,8 @@ import AppLogo from '../../Imgs/logo.png'
 export default function Filters({ filtersReducer, actionDispatcher }) {
 
     /* reducers data */
-    const { animalTypes, selectedAnimalTypeFilter, petsBreeds, showAnimalsTypesCollapsed,
-        showANimalBreedsCollapsed, animalsBreedsShowFrom, animalsBreedsShowUntil, breedsSelected, } = filtersReducer;
+    const { animalTypes, selectedAnimalTypeFilter, petsBreeds, showAnimalsTypesCollapsed, breedsSelected,
+        showANimalBreedsCollapsed, animalsBreedsShowFrom, animalsBreedsShowUntil, } = filtersReducer;
 
     /* Hooks */
     useEffect(() => {
@@ -45,7 +46,13 @@ export default function Filters({ filtersReducer, actionDispatcher }) {
     return (
         <List component="nav"
             className={styles.mainList}
-            subheader={<ListSubheader component="div" className={styles.logoContainer}><img src={AppLogo} alt="Logo" className={styles.logo} /></ListSubheader>}>
+            subheader=
+            {
+                <ListSubheader component="div" className={styles.logoContainer}>
+                    <ArrowBackIosIcon className={styles.showFiltersSectionIcon} onClick={() => actionDispatcher(SET_SHOW_FILTERS_SECTION, { data: false })} />
+                    <img src={AppLogo} alt="Logo" className={styles.logo} />
+                </ListSubheader>
+            }>
 
             <ListItem button onClick={() => actionDispatcher(SET_ANIMALS_TYPES_COLLAPSED, { data: !showAnimalsTypesCollapsed })} >
                 <ListItemText className={styles.mainListTitle} primary="Type" /> {showAnimalsTypesCollapsed ? < ExpandLess /> : < ExpandMore />} </ListItem>
@@ -67,18 +74,29 @@ export default function Filters({ filtersReducer, actionDispatcher }) {
                 })
             }
 
-            <ListItem button onClick={() => actionDispatcher(SET_ANIMALS_BREEDS_COLLAPSED, { data: !showANimalBreedsCollapsed })} >
-                <ListItemText className={styles.mainListTitle} primary="Breeds" /> {showANimalBreedsCollapsed ? < ExpandLess /> : < ExpandMore />} </ListItem>
-
             {
-                petsBreeds.slice(animalsBreedsShowFrom, animalsBreedsShowUntil).map((currObj, index) => {
-                    return (
-                        <Collapse in={showANimalBreedsCollapsed} timeout="auto" unmountOnExit key={index} >
-                            <List component="div" className={styles.subList} > {renderAnimalsBreeds(currObj, index,)} </List>
-                        </Collapse>
-                    )
-                })
+                petsBreeds.length > 0 ?
+                    <>
+                        <ListItem button onClick={() => actionDispatcher(SET_ANIMALS_BREEDS_COLLAPSED, { data: !showANimalBreedsCollapsed })} >
+                            <ListItemText className={styles.mainListTitle} primary="Breeds" /> {showANimalBreedsCollapsed ? < ExpandLess /> : < ExpandMore />}
+                        </ListItem>
+
+                        {
+                            petsBreeds.slice(animalsBreedsShowFrom, animalsBreedsShowUntil).map((currObj, index) => {
+                                return (
+                                    <Collapse in={showANimalBreedsCollapsed} timeout="auto" unmountOnExit key={index} >
+                                        <List component="div" className={styles.subList} > {renderAnimalsBreeds(currObj, index,)} </List>
+                                    </Collapse>
+                                )
+                            })
+                        }
+                    </>
+
+                    :
+
+                    <></>
             }
+
 
         </List>
 

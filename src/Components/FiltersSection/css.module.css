@@ -5,7 +5,13 @@
 
 .logoContainer {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
+  height: 56px;
+}
+
+.showFiltersSectionIcon {
+  display: none !important;
 }
 
 .logo {
@@ -15,13 +21,13 @@
 }
 
 .mainList {
-  background-color: white;
+  background-color: whitesmoke;
   color: black !important;
   border-radius: 5px;
 }
 
 .subList {
-  background-color: white;
+  background-color: whitesmoke;
   color: black !important;
   height: 50px;
   border-radius: 5px;
@@ -43,4 +49,11 @@
 }
 .previousButton {
   color: black !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .showFiltersSectionIcon {
+    display: block !important;
+    color: #6500b7;
+  }
 }

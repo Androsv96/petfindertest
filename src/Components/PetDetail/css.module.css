@@ -1,11 +1,16 @@
 .mainContainer {
+  display: flex;
+  flex-direction: column;
   background-color: #f4f3ef !important;
   height: 100%;
+  overflow: auto;
 }
 
 .closeButtonContainer {
   display: flex;
   justify-content: flex-end;
+  height: 10%;
+  align-items: center;
 }
 
 .closeButton {
@@ -14,18 +19,75 @@
   margin: 1%;
 }
 
-.carrouselContainer {
-  height: 300px;
+.subContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.mainGrid {
+  width: 50% !important;
+}
+
+.carousel {
   width: 100%;
 }
 
-.carousel-wrapper,
-.carousel,
-.carousel > .slider-wrapper,
-.carousel > .slider-wrapper > .slider {
-  height: 100%;
+.carouselImages {
+  height: 300px !important;
+  width: 300px !important;
 }
 
-.carrousel {
-  height: 100% !important;
+.paper {
+  background-color: whitesmoke !important;
+}
+
+.petsDataContainer {
+  padding: 3%;
+  text-align: center;
+}
+
+.petName {
+  font-size: 40px !important;
+  color: #6500b7 !important;
+  font-weight: bold !important;
+}
+
+.petBreeds {
+  font-size: 16px !important;
+  font-weight: bold !important;
+  color: #4d4751 !important;
+}
+
+.petProperties {
+  font-size: 16px !important;
+  font-weight: bold !important;
+  color: #4d4751 !important;
+}
+
+.petTitle {
+  font-size: 30px !important;
+  color: #4d4751 !important;
+  font-weight: bold !important;
+}
+
+.petExtraDataTitle {
+  font-size: 16px !important;
+  font-weight: bold !important;
+  color: #4d4751 !important;
+}
+
+.petExtraDataText {
+  font-size: 14px !important;
+  color: #4d4751 !important;
+}
+
+.petMeet {
+  font-size: 14px !important;
+  color: #4d4751 !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .mainGrid {
+    width: 100% !important;
+  }
 }

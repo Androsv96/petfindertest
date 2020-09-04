@@ -4,12 +4,14 @@
 
 .filtersTitle {
   font-size: 20px !important;
+  margin-left: 1% !important;
 }
 
 .filtersSelected {
   background-color: #6500b7 !important;
   color: white !important;
   margin: 1% !important;
+  position: unset !important;
 }
 
 .filtersSelectedIcon {
@@ -20,6 +22,7 @@
   color: #6500b7 !important;
   margin: 5px !important;
   font-weight: bold !important;
+  position: unset !important;
 }
 
 .clearAllIcon {

@@ -7,13 +7,15 @@
   display: flex;
   flex-direction: row;
   height: 100%;
+  position: relative;
 }
 
 .filterContainer {
-  width: 400px;
+  width: 300px;
   height: 100%;
   overflow: auto;
-  border-radius: 5px;
+  background-color: whitesmoke !important;
+  z-index: 1300;
 }
 
 .hideFilterContainerr {
@@ -22,8 +24,18 @@
 
 .dataContainer {
   width: 100%;
-  height: 95%;
+  height: 100%;
   overflow: auto;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .filterContainer {
+    width: 60%;
+    height: 100%;
+    overflow: auto;
+    position: absolute;
+    background-color: whitesmoke !important;
+  }
 }

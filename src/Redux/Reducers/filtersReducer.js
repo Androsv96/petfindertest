@@ -2,7 +2,7 @@
 import {
     GET_ANIMAL_TYPES_SUCCESS, SET_SELECTED_ANIMAL_TYPE_FILTER, GET_BREEDS_BY_ANIMAL_TYPE_SUCCESS,
     SET_ANIMALS_TYPES_COLLAPSED, SET_ANIMALS_BREEDS_COLLAPSED, SET_SHOW_MORE_BREEDS, SET_BREEDS_SELECTED,
-    SET_CURRENT_PAGE, SET_SHOW_FILTERS_SECTION,
+    SET_CURRENT_PAGE, SET_SHOW_FILTERS_SECTION, SET_SHOW_FILTERS_PROGRESS_ON,
 } from '../Actions';
 
 const initialState = {
@@ -16,10 +16,11 @@ const initialState = {
     animalsBreedsShowUntil: 10,
     breedsSelected: [],
     currentPage: 1,
+    showFiltersProgressOn: false,
 }
 
 export default function FiltersReducer(state = initialState, action) {
-    
+
     switch (action.type) {
 
         case GET_ANIMAL_TYPES_SUCCESS:
@@ -78,6 +79,12 @@ export default function FiltersReducer(state = initialState, action) {
             return {
                 ...state,
                 showFiltersSection: action.payload.data
+            }
+
+        case SET_SHOW_FILTERS_PROGRESS_ON:
+            return {
+                ...state,
+                showFiltersProgressOn: action.payload.data
             }
 
         default:
