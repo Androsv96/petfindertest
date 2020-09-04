@@ -1,7 +1,9 @@
+/* React */
 import React from 'react';
 
 /* Components */
 import styles from './css.module.css';
+import { NO_CONNECTION_TEXT, TRY_AGAIN_TEXT } from '../../Utilities/Constants';
 
 /* Material-Ui */
 import Box from '@material-ui/core/Box';
@@ -16,8 +18,8 @@ export default function NoInternetConecction({ actionDispatcher }) {
     return (
         <Box className={styles.mainContainer}>
             <Box className={styles.subContainer}>
-                There was an error with the request.
-            <Button onClick={() => actionDispatcher(GET_PETS_BEGIN)} endIcon={<Replay />}>Try again</Button>
+                {NO_CONNECTION_TEXT}
+                <Button onClick={() => actionDispatcher(GET_PETS_BEGIN)} endIcon={<Replay />}>{TRY_AGAIN_TEXT}</Button>
             </Box>
         </Box>
     );

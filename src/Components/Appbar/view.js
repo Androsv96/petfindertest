@@ -14,6 +14,7 @@ import { SET_SHOW_FILTERS_SECTION } from '../../Redux/Actions';
 /* Components */
 import styles from './css.module.css';
 import { Typography } from '@material-ui/core';
+import { PETS_FOUND_TEXT } from '../../Utilities/Constants';
 
 export default function MyAppBar({ filtersReducer, petsReducer, actionDispatcher, }) {
 
@@ -28,7 +29,7 @@ export default function MyAppBar({ filtersReducer, petsReducer, actionDispatcher
             <Toolbar>
                 <Box className={styles.mainContainer}>
                     <ArrowForwardIosIcon className={styles.menuIcon} onClick={() => actionDispatcher(SET_SHOW_FILTERS_SECTION, { data: !showFiltersSection })} />
-                    <Typography className={styles.petsFoundText}> Pets found: {Object.entries(petsPagination).length > 0 ? formatedNumber.format(petsPagination.total_count) : 0}</Typography>
+                    <Typography className={styles.petsFoundText}> {PETS_FOUND_TEXT} {Object.entries(petsPagination).length > 0 ? formatedNumber.format(petsPagination.total_count) : 0}</Typography>
                 </Box>
             </Toolbar>
         </AppBar>

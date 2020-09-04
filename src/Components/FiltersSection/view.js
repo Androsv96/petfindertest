@@ -28,6 +28,7 @@ import {
 
 /* Components */
 import styles from './css.module.css';
+import { FILTER_TYPE_TEXT, FILTER_BREEDS_TEXT } from '../../Utilities/Constants';
 
 /* Images */
 import AppLogo from '../../Imgs/logo.png'
@@ -55,7 +56,7 @@ export default function Filters({ filtersReducer, actionDispatcher }) {
             }>
 
             <ListItem button onClick={() => actionDispatcher(SET_ANIMALS_TYPES_COLLAPSED, { data: !showAnimalsTypesCollapsed })} >
-                <ListItemText className={styles.mainListTitle} primary="Type" /> {showAnimalsTypesCollapsed ? < ExpandLess /> : < ExpandMore />} </ListItem>
+                <ListItemText className={styles.mainListTitle} primary={FILTER_TYPE_TEXT} /> {showAnimalsTypesCollapsed ? < ExpandLess /> : < ExpandMore />} </ListItem>
             {
                 animalTypes.map((currObj, index) => {
                     return (
@@ -78,7 +79,7 @@ export default function Filters({ filtersReducer, actionDispatcher }) {
                 petsBreeds.length > 0 ?
                     <>
                         <ListItem button onClick={() => actionDispatcher(SET_ANIMALS_BREEDS_COLLAPSED, { data: !showANimalBreedsCollapsed })} >
-                            <ListItemText className={styles.mainListTitle} primary="Breeds" /> {showANimalBreedsCollapsed ? < ExpandLess /> : < ExpandMore />}
+                            <ListItemText className={styles.mainListTitle} primary={FILTER_BREEDS_TEXT} /> {showANimalBreedsCollapsed ? < ExpandLess /> : < ExpandMore />}
                         </ListItem>
 
                         {

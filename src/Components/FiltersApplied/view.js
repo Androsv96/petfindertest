@@ -10,6 +10,7 @@ import ClearIcon from '@material-ui/icons/Clear';
 
 /* Components */
 import styles from './css.module.css';
+import { FILTERS_APPLIED_TEXT } from '../../Utilities/Constants';
 
 /* Redux-actions */
 import { SET_BREEDS_SELECTED, GET_PETS_WITH_FILTER_BEGIN, } from '../../Redux/Actions';
@@ -24,7 +25,7 @@ export default function Pets({ filtersReducer, actionDispatcher }) {
             {
                 breedsSelected.length > 0 ?
                     <>
-                        <Typography className={styles.filtersTitle}>Filters applied</Typography>
+                        <Typography className={styles.filtersTitle}>{FILTERS_APPLIED_TEXT}</Typography>
                         {
                             breedsSelected.map((value, index) =>
                                 <Button variant="contained" key={index} endIcon={<ClearIcon className={styles.filtersSelectedIcon} />}
