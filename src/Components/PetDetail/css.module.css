@@ -43,7 +43,6 @@
 
 .petsDataContainer {
   padding: 3%;
-  text-align: center;
 }
 
 .petName {
@@ -53,21 +52,20 @@
 }
 
 .petBreeds {
-  font-size: 16px !important;
   font-weight: bold !important;
-  color: #4d4751 !important;
+  color: #6500b7 !important;
 }
 
 .petProperties {
   font-size: 16px !important;
   font-weight: bold !important;
-  color: #4d4751 !important;
+  color: #6500b7 !important;
+  background-color: unset !important;
+  margin: 2%;
 }
 
-.petTitle {
-  font-size: 30px !important;
-  color: #4d4751 !important;
-  font-weight: bold !important;
+.petPropetiesAvatar {
+  color: black !important;
 }
 
 .petExtraDataTitle {

@@ -9,13 +9,15 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import Slide from '@material-ui/core/Slide';
 import CancelIcon from '@material-ui/icons/Cancel';
+import Chip from '@material-ui/core/Chip';
+import PetsIcon from '@material-ui/icons/Pets';
 
 /* Redux-actions */
 import { SET_SHOW_PET_DETAIL, } from '../../Redux/Actions';
 
 /* Components */
 import styles from './css.module.css';
-import { PROPERTIES_TEXT, ABOUT_TEXT, COATH_LENGTH, AGE_TEXT, MEET_TEXT, } from '../../Utilities/Constants';
+import { PROPERTIES_TEXT, ABOUT_TEXT, MEET_TEXT, HOUSE_TRAINED_TEXT, } from '../../Utilities/Constants';
 
 /* react carousel */
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -25,7 +27,7 @@ export default function PetDetail({ petsReducer, actionDispatcher }) {
 
     /* reducers data */
     const { petsShowDetail, petSelected, } = petsReducer;
-
+    console.log(petSelected)
     return (
         <Dialog fullScreen open={petsShowDetail} TransitionComponent={Transition} >
             <Box className={styles.mainContainer}>
@@ -60,32 +62,27 @@ export default function PetDetail({ petsReducer, actionDispatcher }) {
                             <Paper className={styles.paper}>
 
                                 <Box className={styles.petsDataContainer}>
-                                    <Typography className={styles.petName}>{petSelected.name}</Typography>
-                                    <Typography className={styles.petBreeds}>{petSelected.breeds ? petSelected.breeds.primary : ""}</Typography>
+                                    <h1 >{petSelected.name}</h1>
+                                    <h3 className={styles.petBreeds}>{petSelected.breeds ? petSelected.breeds.primary : ""}</h3>
 
                                     <hr />
                                     <Box>
-                                        <Typography className={styles.petTitle}>{PROPERTIES_TEXT}</Typography>
-                                        {petSelected.age ? <Typography className={styles.petProperties}>{petSelected.age}</Typography> : <></>}
-                                        {petSelected.gender ? <Typography className={styles.petProperties}>{petSelected.gender}</Typography> : <></>}
-                                        {petSelected.size ? <Typography className={styles.petProperties}>{petSelected.size}</Typography> : <></>}
-                                        {petSelected.colors && petSelected.colors.primary ? <Typography className={styles.petProperties}>{petSelected.colors.primary}</Typography> : <></>}
-
+                                        <h2 >{PROPERTIES_TEXT}</h2>
+                                        {petSelected.age ? <Chip avatar={<PetsIcon className={styles.petPropetiesAvatar} />} label={petSelected.age} className={styles.petProperties} /> : <></>}
+                                        {petSelected.gender ? <Chip avatar={<PetsIcon className={styles.petPropetiesAvatar} />} label={petSelected.gender} className={styles.petProperties} /> : <></>}
+                                        {petSelected.size ? <Chip avatar={<PetsIcon className={styles.petPropetiesAvatar} />} label={petSelected.size} className={styles.petProperties} /> : <></>}
+                                        {petSelected.colors && petSelected.colors.primary ? <Chip avatar={<PetsIcon className={styles.petPropetiesAvatar} />} label={petSelected.colors.primary} className={styles.petProperties} /> : <></>}
                                     </Box>
 
                                     <hr />
-                                    <Typography className={styles.petTitle}>{ABOUT_TEXT}</Typography>
-
-                                    {petSelected.coat ? <Typography className={styles.petExtraDataTitle}>{COATH_LENGTH}</Typography> : <></>}
-                                    {petSelected.coat ? <Typography className={styles.petExtraDataText}>{petSelected.coat}</Typography> : <></>}
-
-                                    {petSelected.age ? <Typography className={styles.petExtraDataTitle}>{AGE_TEXT}</Typography> : <></>}
-                                    {petSelected.age ? <Typography className={styles.petExtraDataText}>{petSelected.age}</Typography> : <></>}
+                                    <h2>{ABOUT_TEXT}</h2>
+                                    {petSelected.coat ? <Chip avatar={<PetsIcon className={styles.petPropetiesAvatar} />} label={petSelected.coat} className={styles.petProperties} /> : <></>}
+                                    {petSelected.attributes && petSelected.attributes.house_trained ? <Chip avatar={<PetsIcon className={styles.petPropetiesAvatar} />} label={HOUSE_TRAINED_TEXT} className={styles.petProperties} /> : <></>}
                                     <hr />
 
 
-                                    {petSelected.description ? <Typography className={styles.petTitle}>{`${MEET_TEXT} ${petSelected.name}`}</Typography> : <></>}
-                                    {petSelected.description ? <Typography className={styles.petDescriptionText}>{petSelected.description}</Typography> : <></>}
+                                    {petSelected.description ? <h2>{`${MEET_TEXT} ${petSelected.name}`}</h2> : <></>}
+                                    {petSelected.description ? <h4 className={styles.petBreeds}>{petSelected.description}</h4> : <></>}
 
                                 </Box>
 

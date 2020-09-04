@@ -30,6 +30,5 @@ export const TRY_AGAIN_TEXT = "Try again";
 //Pet details module
 export const PROPERTIES_TEXT = "Properties";
 export const ABOUT_TEXT = "About";
-export const COATH_LENGTH = "Coat length";
-export const AGE_TEXT = "Age";
 export const MEET_TEXT = "Meet";
+export const HOUSE_TRAINED_TEXT = "House trained";

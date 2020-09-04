@@ -11,22 +11,20 @@
   background-color: #6500b7 !important;
   color: white !important;
   margin: 1% !important;
-  position: unset !important;
 }
 
 .filtersSelectedIcon {
-  color: white;
+  color: white !important;
 }
 
 .clearAllButton {
   color: #6500b7 !important;
   margin: 5px !important;
   font-weight: bold !important;
-  position: unset !important;
 }
 
 .clearAllIcon {
-  color: #6500b7;
+  color: #6500b7 !important;
 }
 
 @media only screen and (max-width: 600px) {
