@@ -13,7 +13,7 @@ import { SET_SHOW_FILTERS_SECTION } from '../../Redux/Actions';
 
 /* Components */
 import styles from './css.module.css';
-import { Typography } from '@material-ui/core';
+import Typography from '@material-ui/core/Typography';
 import { PETS_FOUND_TEXT } from '../../Utilities/Constants';
 
 export default function MyAppBar({ filtersReducer, petsReducer, actionDispatcher, }) {

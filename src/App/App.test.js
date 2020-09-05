@@ -1,27 +1,42 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import { Provider } from 'react-redux'
+import { mount, shallow } from 'enzyme';
 import MyComponent from './';
-import rootSaga from '../Sagas/';
-import configureStore from '../Redux/Store';
+import configureStore from 'redux-mock-store';
 import Adapter from 'enzyme-adapter-react-16';
 import { configure } from 'enzyme';
 
+const configureMockStore = configureStore();
 configure({ adapter: new Adapter() });
 
-const setup = () => {
-
-  let store = configureStore();
-  store.runSaga(rootSaga);
-
-  const wrapper = mount(<Provider store={store}><MyComponent /></Provider>)
-  return { wrapper }
+const initialState = {
+  petsReducer: {
+    petsData: [],
+    petsPagination: {},
+    petsShowDetail: false,
+    petSelected: {},
+    showPetsProgressOn: false,
+  },
+  filtersReducer: {
+    showFiltersSection: true,
+    animalTypes: [],
+    petsBreeds: [],
+    selectedAnimalTypeFilter: "",
+    showAnimalsTypesCollapsed: true,
+    showANimalBreedsCollapsed: false,
+    animalsBreedsShowFrom: 0,
+    animalsBreedsShowUntil: 10,
+    breedsSelected: [],
+    currentPage: 1,
+    showFiltersProgressOn: false,
+  },
+  utilitiesReducer: {
+    hasInternetConnection: true,
+  }
 }
 
-describe('App component test', () => {
-  test('Testing initial store data', () => {
-    const { wrapper } = setup();
-    let hasInternetConnection = wrapper.find('hasInternetConnection');
-    expect(hasInternetConnection).toBe(false)
-  });
+const store = configureMockStore(initialState);
+
+it('Testing App component', () => {
+  const wrapper = shallow(<MyComponent store={store} />).dive();
+  expect(wrapper.getElements()).toMatchSnapshot();
 })

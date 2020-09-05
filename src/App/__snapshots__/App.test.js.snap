@@ -1,3 +1,48 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[` 1`] = `Array []`;
+exports[`Testing App component 1`] = `
+Array [
+  <App
+    dispatch={[Function]}
+    filtersReducer={
+      Object {
+        "animalTypes": Array [],
+        "animalsBreedsShowFrom": 0,
+        "animalsBreedsShowUntil": 10,
+        "breedsSelected": Array [],
+        "currentPage": 1,
+        "petsBreeds": Array [],
+        "selectedAnimalTypeFilter": "",
+        "showANimalBreedsCollapsed": false,
+        "showAnimalsTypesCollapsed": true,
+        "showFiltersProgressOn": false,
+        "showFiltersSection": true,
+      }
+    }
+    petsReducer={
+      Object {
+        "petSelected": Object {},
+        "petsData": Array [],
+        "petsPagination": Object {},
+        "petsShowDetail": false,
+        "showPetsProgressOn": false,
+      }
+    }
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+    utilitiesReducer={
+      Object {
+        "hasInternetConnection": true,
+      }
+    }
+  />,
+]
+`;

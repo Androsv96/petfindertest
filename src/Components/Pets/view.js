@@ -16,6 +16,7 @@ import { GET_PETS_BEGIN, GET_PETS_WITH_FILTER_BEGIN, SET_CURRENT_PAGE, SET_SHOW_
 import styles from './css.module.css';
 import PetDetail from '../PetDetail';
 import ProgressOn from '../ProgressOn/view';
+import { PREVIOUS_BUTTON_TEXT, NEXT_BUTTON_TEXT, } from '../../Utilities/Constants';
 
 /* Images */
 import PetImage from '../../Imgs/pet.png';
@@ -65,14 +66,14 @@ export default function Pets({ petsReducer, filtersReducer, utilitiesReducer, ac
                             <Button variant="contained" className={currentPage === 1 ? styles.disabledButton : styles.previousPageButton} startIcon={<NavigateBeforeIcon />}
                                 onClick={() => onPreviousPageClicked()}
                                 disabled={currentPage === 1}>
-                                Previous
-                        </Button>
+                                {PREVIOUS_BUTTON_TEXT}
+                            </Button>
 
                             <Button variant="contained" className={currentPage === petsPagination.total_pages ? styles.disabledButton : styles.nextPageButton} endIcon={<NavigateNextIcon />}
                                 onClick={() => onNextPageClicked()}
                                 disabled={currentPage === petsPagination.total_pages}>
-                                Next
-                        </Button>
+                                {NEXT_BUTTON_TEXT}
+                            </Button>
                         </Box>
                     </Grid>
 

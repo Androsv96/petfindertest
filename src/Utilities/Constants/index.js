@@ -18,6 +18,7 @@ export const PETS_FOUND_TEXT = "Pets found:";
 
 // Filters applied module
 export const FILTERS_APPLIED_TEXT = "Filters applied";
+export const CLEAR_ALL_TEXT = "CLEAR ALL";
 
 //Filters section module
 export const FILTER_TYPE_TEXT = "Type";
@@ -33,3 +34,7 @@ export const ABOUT_TEXT = "About";
 export const MEET_TEXT = "Meet";
 export const HOUSE_TRAINED_TEXT = "House trained";
 export const NOT_TRAINED_TEXT = "Not trained";
+
+//Pets module
+export const PREVIOUS_BUTTON_TEXT = "Previous";
+export const NEXT_BUTTON_TEXT = "Next";

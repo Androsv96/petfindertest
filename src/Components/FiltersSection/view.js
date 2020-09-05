@@ -56,7 +56,8 @@ export default function Filters({ filtersReducer, actionDispatcher }) {
             }>
 
             <ListItem button onClick={() => actionDispatcher(SET_ANIMALS_TYPES_COLLAPSED, { data: !showAnimalsTypesCollapsed })} >
-                <ListItemText className={styles.mainListTitle} primary={FILTER_TYPE_TEXT} /> {showAnimalsTypesCollapsed ? < ExpandLess /> : < ExpandMore />} </ListItem>
+                <ListItemText className={styles.mainListTitle} primary={FILTER_TYPE_TEXT} /> {showAnimalsTypesCollapsed ? < ExpandLess /> : < ExpandMore />}
+            </ListItem>
             {
                 animalTypes.map((currObj, index) => {
                     return (

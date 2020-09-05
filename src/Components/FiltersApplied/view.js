@@ -10,12 +10,12 @@ import Chip from '@material-ui/core/Chip';
 
 /* Components */
 import styles from './css.module.css';
-import { FILTERS_APPLIED_TEXT } from '../../Utilities/Constants';
+import { FILTERS_APPLIED_TEXT, CLEAR_ALL_TEXT } from '../../Utilities/Constants';
 
 /* Redux-actions */
 import { SET_BREEDS_SELECTED, GET_PETS_WITH_FILTER_BEGIN, } from '../../Redux/Actions';
 
-export default function Pets({ filtersReducer, actionDispatcher }) {
+export default function FiltersApplied({ filtersReducer, actionDispatcher }) {
 
     /* reducers data */
     const { selectedAnimalTypeFilter, breedsSelected, } = filtersReducer;
@@ -32,7 +32,7 @@ export default function Pets({ filtersReducer, actionDispatcher }) {
                                     onDelete={() => deleteFilter(value)} />
                             )
                         }
-                        <Chip variant="outlined" className={styles.clearAllButton} label={"CLEAR ALL"} deleteIcon={<DeleteIcon className={styles.clearAllIcon} />}
+                        <Chip variant="outlined" className={styles.clearAllButton} label={CLEAR_ALL_TEXT} deleteIcon={<DeleteIcon className={styles.clearAllIcon} />}
                             onDelete={() => deleteAllFilters()} />
                     </>
                     :
